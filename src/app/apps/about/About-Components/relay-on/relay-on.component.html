@@ -1,0 +1,121 @@
+<form #contactform="ngForm" (ngSubmit)="onSubmit(contactform)">
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            <input type="text" placeholder="Votre e-mail" name="mail" class="form-control" required ngModel>
+            <br> <br>
+        </div>
+    </div>
+    <div class="row  justify-content-center">
+        <div class="col-md-2 text-center">
+            <a class="btn btn-info-gradiant btn-md m-t-20" data-toggle="collapse"
+                (click)="showLocation(1)"><span>Vence</span></a>
+        </div>
+        <div class="col-md-2 text-center">
+            <a class="btn btn-info-gradiant btn-md m-t-20" data-toggle="collapse"
+                (click)="showLocation(2)"><span>Tourrette-sur-Loup</span></a>
+        </div>
+        <div class="col-md-2 text-center">
+            <a class="btn btn-info-gradiant btn-md m-t-20" data-toggle="collapse" (click)="showLocation(3)"><span>La
+                    Colle</span></a>
+        </div>
+        <div class="col-md-2 text-center">
+            <a class="btn btn-info-gradiant btn-md m-t-20" data-toggle="collapse"
+                (click)="showLocation(4)"><span>Bar-sur-Loup</span></a>
+        </div>
+    </div>
+    <div class="row m-t-40">
+        <div class="col-md-2 wrap-feature1-box" *ngFor='let relay of relayOn'>
+            <div class="card card-shadow" data-aos="fade-right" data-aos-duration="1200">
+                <div class="card-body p-20 text-center">
+                    <!-- <div class="icon-space display-5">
+                    <i [class]="relay.icon"></i>
+                </div> -->
+                    <h6 class="font-medium">{{relay.field}}</h6>
+                    <a class="btn btn-info-gradiant btn-sm btn-arrow m-t-20" data-toggle="collapse"
+                        (click)="showDay(relay.field)" (click)="showDetails(5)" href="/reservation#anchorAve">
+                        {{relay.slot1}}
+                    </a>
+                    <a class="btn btn-info-gradiant btn-sm btn-arrow m-t-20" data-toggle="collapse"
+                        (click)="showDay(relay.field)" (click)="showDetails(6)" href="/reservation#anchorAve">
+                        {{relay.slot2}}
+                    </a>
+                    <a class="btn btn-info-gradiant btn-sm btn-arrow m-t-20" data-toggle="collapse"
+                        (click)="showDay(relay.field)" (click)="showDetails(7)" href="/reservation#anchorAve">
+                        {{relay.slot3}}
+                    </a>
+                    <a class="btn btn-info-gradiant btn-sm btn-arrow m-t-20" data-toggle="collapse"
+                        (click)="showDay(relay.field)" (click)="showDetails(8)" href="/reservation#anchorAve">
+                        {{relay.slot4}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="anchorAve"></div>
+    <div class="text-center">
+        <div *ngIf="ShowDetails1 == true">
+            <p>Vence</p>
+        </div>
+        <div *ngIf="ShowDetails2 == true">
+            <p>Tourrette-sur-Loup</p>
+        </div>
+        <div *ngIf="ShowDetails3 == true">
+            <p>La Colle</p>
+        </div>
+        <div *ngIf="ShowDetails4 == true">
+            <p>Bar-sur-Loup</p>
+        </div>
+    </div>
+    <div class="text-center">
+        <div *ngIf="ShowDay1 == true">
+            <span>Dimanche</span>
+        </div>
+        <div *ngIf="ShowDay2 == true">
+            <span>Mercredi</span>
+        </div>
+        <div *ngIf="ShowDay3 == true">
+            <span>Jeudi</span>
+        </div>
+        <div *ngIf="ShowDay4 == true">
+            <span>Vendredi</span>
+        </div>
+        <div *ngIf="ShowDay5 == true">
+            <span>Samedi</span>
+        </div>
+        <div *ngIf="ShowDay6 == true">
+            <span>Lundi</span>
+        </div>
+    </div>
+    <div class=text-center>
+        <div *ngIf="ShowDetails5 == true">
+            <span>{{relayOn[1].slot1}}</span>
+        </div>
+        <div *ngIf="ShowDetails6 == true">
+            <span>{{relayOn[1].slot2}}</span>
+        </div>
+        <div *ngIf="ShowDetails7 == true">
+            <span>{{relayOn[1].slot3}}</span>
+        </div>
+        <div *ngIf="ShowDetails8 == true">
+            <span>{{relayOn[1].slot4}}</span>
+        </div>
+    </div>
+    <br>
+
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            <input type="text" placeholder="le nom de votre chien(ne)" name="name" class="form-control" required
+                ngModel>
+            <br> <br>
+            <input type="text" placeholder="sa race" name="type" class="form-control" required ngModel>
+            <br> <br>
+            <input type="number" placeholder="son âge" name="age" class="form-control" required ngModel>
+            <br> <br>
+            <input type="text" placeholder="bon à savoir" name="goodtoknow" class="form-control" required ngModel>
+            <br> <br>
+            <input [disabled]=" !contactform.valid" class="btn btn-info-gradiant btn-md btn-arrow m-t-20" type="submit"
+                name="submit" value="Envoyer" />
+            <p>*Vous devez remplir l'intégralité des champs pour soumettre votre demande</p>
+        </div>
+    </div>
+</form>
